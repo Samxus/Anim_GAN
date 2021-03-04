@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from torchvision.datasets import ImageFolder
 
-from Ani_GAN.config import opt
+from config import opt
 
 
 def dataloader():
@@ -18,6 +18,6 @@ def dataloader():
     ])
 
     dataset = ImageFolder('data/', transform=transf)
-    dataloader = DataLoader(dataset=dataset, batch_size=opt.batch_size, num_workers=opt.num_works, drop_last=True,
-                            shuffle=True)
-    return dataset, dataloader
+    dl = DataLoader(dataset=dataset, batch_size=opt.batch_size, num_workers=opt.num_works, drop_last=True,
+                    shuffle=True)
+    return dataset, dl
