@@ -1,23 +1,7 @@
+from Crawler.request_pack.test1 import download
 import os
 import requests
 import re
-
-
-def download(url, user_agent='wswp', num_retries=2, proxy=None):
-    print("Downloading...", url)
-    headers = {'User_Agent': user_agent}
-    try:
-        resp = requests.get(url, headers= headers, proxies=proxy)
-        html = resp.text
-        if resp.status_code >= 400:
-            print('Downloading error:', resp.text)
-            html = None
-            if num_retries and 500 <= resp.status_code < 600:
-                return download(url, num_retries - 1)
-    except requests.exceptions.RequestException as e:
-        print('Downloading error', e.reason)
-    return html
-
 
 indx = 1
 
