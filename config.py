@@ -4,9 +4,9 @@ class Config(object):
     img_size = 150
 
     # train cofig
-    batch_size = 256
-    max_epoch = 2000
-    lr = 2e-4
+    batch_size = 64
+    max_epoch = 200
+    lr = 3e-4
     beta1 = 0.5
     use_gpu = True
     save_every = 5
@@ -20,12 +20,12 @@ class Config(object):
 
     # G and D Updating Frequency
     d_step = 1
-    g_step = 5
-
-    # d_save_path = None
-    # g_save_path = None
-    d_save_path = 'checkpoints/netd_epoch.pth'
-    g_save_path = 'checkpoints/netg_epoch.pth'
+    g_step = 2
+    #
+    d_save_path = None
+    g_save_path = None
+    # d_save_path = 'checkpoints/netd_epoch_2.pth'
+    # g_save_path = 'checkpoints/netg_epoch_2.pth'
 
 
 opt = Config()

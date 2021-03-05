@@ -73,11 +73,10 @@ for epoch in epochs:
                 t.set_postfix(loss=error_g)
                 time.sleep(0.1)
 
-
         if (epoch + 1) % opt.save_every == 0:
             g_img = netg(fix_noise)
-            save_image(g_img, '%s/%s.png' % (opt.save_path, epoch), normalize=True, range=(-1, 1))
-            torch.save(netg.state_dict(), 'checkpoints/netg_epoch.pth')
-            torch.save(netd.state_dict(), 'checkpoints/netd_epoch.pth')
+            save_image(g_img, '%s/%s_4.png' % (opt.save_path, epoch), normalize=True, range=(-1, 1))
+            torch.save(netg.state_dict(), 'checkpoints/netg_epoch_improved.pth')
+            torch.save(netd.state_dict(), 'checkpoints/netd_epoch_improved.pth')
 
             print('Epoch: %s, NET_G_Error: %s' % (epoch, error_g.data.item()))

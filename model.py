@@ -7,22 +7,22 @@ class netG(nn.Module):
         self.layer = nn.Sequential(
             # (100,1,1) to (800, 4,4)
             nn.ConvTranspose2d(opt.noisy_dim, opt.ngf * 8, 4, 1, 0, bias=False),
-            nn.BatchNorm2d(opt.ngf * 8),
+            nn.InstanceNorm2d(opt.ngf * 8),
             nn.ReLU(inplace=True),
 
             # (400, 12, 12)
             nn.ConvTranspose2d(opt.ngf * 8, opt.ngf * 4, 6, 2, 0, bias=False),
-            nn.BatchNorm2d(opt.ngf * 4),
+            nn.InstanceNorm2d(opt.ngf * 4),
             nn.ReLU(inplace=True),
 
             # (200, 25, 25)
             nn.ConvTranspose2d(opt.ngf * 4, opt.ngf * 2, 5, 2, 1, bias=False),
-            nn.BatchNorm2d(opt.ngf * 2),
+            nn.InstanceNorm2d(opt.ngf * 2),
             nn.ReLU(inplace=True),
 
             # (100, 50, 50)
             nn.ConvTranspose2d(opt.ngf * 2, opt.ngf, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(opt.ngf),
+            nn.InstanceNorm2d(opt.ngf),
             nn.ReLU(inplace=True),
 
             # (100, 150, 150)
@@ -43,15 +43,15 @@ class netD(nn.Module):
             nn.LeakyReLU(0.2, inplace=True),
 
             nn.Conv2d(opt.ndf, opt.ndf * 2, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(opt.ndf*2),
+            nn.InstanceNorm2d(opt.ndf*2),
             nn.LeakyReLU(0.2, inplace=True),
 
             nn.Conv2d(opt.ndf * 2, opt.ndf * 4, 5, 2, 1, bias=False),
-            nn.BatchNorm2d(opt.ndf * 4),
+            nn.InstanceNorm2d(opt.ndf * 4),
             nn.LeakyReLU(0.2, inplace=True),
 
             nn.Conv2d(opt.ndf * 4, opt.ndf * 8, 6, 2, 0, bias=False),
-            nn.BatchNorm2d(opt.ndf * 8),
+            nn.InstanceNorm2d(opt.ndf * 8),
             nn.LeakyReLU(0.2, inplace=True),
 
             nn.Conv2d(opt.ndf * 8, 1, 4, 1, 0, bias=False),
